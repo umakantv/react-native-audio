@@ -100,8 +100,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void checkAuthorizationStatus(Promise promise) {
-    int permissionCheck = this.context.checkSelfPermission(getCurrentActivity(),
-            Manifest.permission.RECORD_AUDIO);
+    int permissionCheck = this.context.checkSelfPermission(Manifest.permission.RECORD_AUDIO);
     boolean permissionGranted = permissionCheck == PackageManager.PERMISSION_GRANTED;
     promise.resolve(permissionGranted);
   }
