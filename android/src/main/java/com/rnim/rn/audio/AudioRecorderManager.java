@@ -27,8 +27,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.media.MediaRecorder;
 import android.media.AudioManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Base64;
 import android.util.Log;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
@@ -102,7 +100,7 @@ class AudioRecorderManager extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void checkAuthorizationStatus(Promise promise) {
-    int permissionCheck = ContextCompat.checkSelfPermission(getCurrentActivity(),
+    int permissionCheck = this.context.checkSelfPermission(getCurrentActivity(),
             Manifest.permission.RECORD_AUDIO);
     boolean permissionGranted = permissionCheck == PackageManager.PERMISSION_GRANTED;
     promise.resolve(permissionGranted);
